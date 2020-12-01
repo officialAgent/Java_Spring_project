@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC - list</title>
+
+</head>
+
+<body>
+<div class="header" style="padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;">
+    <h1>Ultimate database</h1>
+    <p>Add Travel Contract </p>
+    <p>Insurer info </p>
+</div>
+
+<div class="header" style="padding: 60px;
+  text-align: center;
+  background: #1E90FF;
+  color: white;
+  font-size: 30px;">
+    <h1>INFO</h1>
+    <p>U must fill out the datum</p>
+    <p>The values must be positive numbers</p>
+</div>
+
+<div class="w3-bar" style="text-align: center; ">
+    <button  class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 50%">+</button>
+    <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 24%" onclick="location.href='/'">home </button>
+</div>
+
+<table style="padding: 50px;margin-left:auto; margin-right:auto; ">
+    <thead>
+    <tr style=" background-color: #1abc9c;color: white; ">
+        <th class="mdl-data-table__cell--non-numeric">ID</th>
+        <th class="mdl-data-table__cell--non-numeric">Firstname</th>
+        <th class="mdl-data-table__cell--non-numeric">Lastname</th>
+        <th class="mdl-data-table__cell--non-numeric">Email</th>
+        <th class="mdl-data-table__cell--non-numeric">BirthID</th>
+        <th class="mdl-data-table__cell--non-numeric">C.address</th>
+        <th class="mdl-data-table__cell--non-numeric">P.address</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.forname}"></td>
+        <td th:text="${user.lastname}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.birthiD}"></td>
+        <td th:text="${user.addressForCorrespondence}"></td>
+        <td th:text="${user.permanentResidence}"></td>
+
+
+
+
+    </tr>
+
+    </tbody>
+</table>
+
+
+
+
+<form th:action="@{'/submitcontract/traveledited/'+ ${travelLifeInsurence.id}+'/'+${user.id}}" th:object="${travelLifeInsurence} "  method="post" style=" width:200px; display: inline-block;  padding: 50px;margin-left:45%; margin-right:50%; margin-top: 40px  " >
+
+    <p th:text="${travelLifeInsurence.datum}"></p>
+
+    <label for="Start date">Start date</label>
+    <input type="datetime-local" id="Start date"  th:field="*{startdate}"/>
+    <p th:if="${#fields.hasErrors('startdate')}" th:errors="*{startdate}"></p>
+    <br>
+
+    <label for="End date">Enddate</label>
+    <input type="datetime-local" id="End date"   th:field="*{enddate}"/>
+    <p th:if="${#fields.hasErrors('enddate')}" th:errors="*{enddate}"></p>
+    <br>
+
+    <label for="Sum">Sum</label>
+    <input type="number" id="Sum"   th:field="*{sum}"/>
+    <p th:if="${#fields.hasErrors('sum')}" th:errors="*{sum}"></p>
+    <br>
+
+    <label for="installment">Installment</label>
+    <input type="number" id="installment"   th:field="*{installment}"/>
+    <p th:if="${#fields.hasErrors('installment')}" th:errors="*{installment}"></p>
+    <br>
+
+    <label style="width:200px; display: inline-block; "   for="witineu">In Eu or not</label>
+    <input type="checkbox" id="witineu"   th:field="*{withinTheEU}"/>
+    <br>
+
+    <p>Propose of the trip</p>
+
+    <select th:field="*{triptype}"  >
+        <option
+                th:each="trip: ${triptype}"
+                th:value="${trip} "
+                th:text="${trip.getPurpose()}">
+
+        </option>
+    </select>
+
+
+
+    <p>Insured person</p>
+
+    <select th:field="*{insured.id}"  >
+        <option
+                th:each="insured: ${insured}"
+                th:value="${insured.value.id}  "
+                th:text="${insured.value.forname } +  ${ insured.value.lastname} ">
+
+        </option>
+    </select>
+
+
+
+    </label>
+
+    <input style="background-color: #1abc9c;font-size: 24px;border-radius: 50%; margin-top: 12px"  type="submit" value="Submit"/>
+
+
+
+
+
+
+
+
+</form>
+
+
+</body>
+</html>

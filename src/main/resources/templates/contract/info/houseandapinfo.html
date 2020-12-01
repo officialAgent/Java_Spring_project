@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC - list</title>
+
+</head>
+
+<body>
+<div class="header" style="padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;">
+    <h1>Ultimate database</h1>
+    <p>User Info</p>
+</div>
+
+
+
+<div class="w3-bar" style="text-align: center; background: #5F9EA0 ">
+    <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 50%" onclick="location.href='/add'">+ </button>
+
+    <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 24%" onclick="location.href='/'">home </button>
+
+
+
+</div>
+
+
+<table style="margin-top: 60px; padding: 50px;margin-left:auto; margin-right:auto; ">
+    <thead>
+    <tr style=" background-color: #1abc9c;color: white; ">
+        <th class="mdl-data-table__cell--non-numeric">ID</th>
+        <th class="mdl-data-table__cell--non-numeric">Date</th>
+        <th class="mdl-data-table__cell--non-numeric">Start Date </th>
+        <th class="mdl-data-table__cell--non-numeric">End date</th>
+        <th class="mdl-data-table__cell--non-numeric">Montly cost</th>
+        <th class="mdl-data-table__cell--non-numeric">Sum</th>
+        <th class="mdl-data-table__cell--non-numeric">Insurer</th>
+
+        <th class="mdl-data-table__cell--non-numeric">Value</th>
+        <th class="mdl-data-table__cell--non-numeric">Zip code</th>
+        <th class="mdl-data-table__cell--non-numeric">City</th>
+        <th class="mdl-data-table__cell--non-numeric">Street</th>
+        <th class="mdl-data-table__cell--non-numeric">House number</th>
+        <th class="mdl-data-table__cell--non-numeric">garage_insurance</th>
+
+
+
+        <th class="mdl-data-table__cell--non-numeric">Household value</th>
+
+        <th class="mdl-data-table__cell--non-numeric">Edit</th>
+        <th class="mdl-data-table__cell--non-numeric">Info</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr  th:each="contract: ${contract}">
+        <td th:text="${contract.id}"></td>
+        <td th:text="${contract.datum}"></td>
+        <td th:text="${contract.startdate}"></td>
+        <td th:text="${contract.enddate}"></td>
+        <td th:text="${contract.installment}"></td>
+        <td th:text="${contract.sum}"></td>
+        <td th:text="${contract.insurer}"></td>
+
+
+
+        <td th:text="${contract.value}"></td>
+        <td th:text="${contract.address.zipcode}"></td>
+        <td th:text="${contract.address.township}"></td>
+        <td th:text="${contract.address.street}"></td>
+        <td th:text="${contract.address.number}"></td>
+        <td th:text="${contract.propertyType}"></td>
+
+        <td th:text="${contract.garage_insurance}"></td>
+
+
+
+
+
+
+        <td  > <a th:href="@{'/contract/id/edit/' + ${contract.id}}" > <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 35%" >Edit</button> </a>  </td>
+        <td  > <a th:href="@{'/contract/id/info/' + ${contract.id}}" > <button class="w3-button w3-circle w3-black" style="background-color: #008080;font-size: 24px;border-radius: 35%" >Info</button> </a>  </td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

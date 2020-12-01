@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC - list</title>
+
+</head>
+
+<body>
+<div class="header" style="padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;">
+    <h1>Ultimate database</h1>
+    <p>User Info</p>
+</div>
+
+
+
+<div class="w3-bar" style="text-align: center; background: #5F9EA0 ">
+    <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 50%" onclick="location.href='/add'">+ </button>
+    <a th:href="@{'/add/contract/accidnet/' + ${user.id}}">    <button class="w3-bar-item w3-button w3-red" style="background-color:  #1abc9c;font-size: 24px;font-family:'Fredericka the Great', cursive;color:#2F4F4F ">Accident Insurance </button></a>
+    <a th:href="@{'/add/contract/householdapp/' + ${user.id}}"> <button class="w3-bar-item w3-button w3-red" style="background-color:  #1abc9c;font-size: 24px;font-family:'Fredericka the Great', cursive;color:#2F4F4F ">House and Apartmant Insurance </button></a>
+    <a th:href="@{'/add/contract/household/' + ${user.id}}"> <button class="w3-bar-item w3-button w3-red" style="background-color:  #1abc9c;font-size: 24px;font-family:'Fredericka the Great', cursive;color:#2F4F4F ">Household Insurance </button></a>
+ <a th:href="@{'/add/contract/travel/' + ${user.id}}">  <button class="w3-bar-item w3-button w3-red" style="background-color:  #1abc9c;font-size: 24px;font-family:'Fredericka the Great', cursive;color:#2F4F4F " >Travel Life Insurance </button></a>
+    <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 24%" onclick="location.href='/'">home </button>
+</div>
+<table style="padding: 50px;margin-left:auto; margin-right:auto; ">
+    <thead>
+    <tr style=" background-color: #1abc9c;color: white; ">
+        <th class="mdl-data-table__cell--non-numeric">ID</th>
+        <th class="mdl-data-table__cell--non-numeric">Firstname</th>
+        <th class="mdl-data-table__cell--non-numeric">Lastname</th>
+        <th class="mdl-data-table__cell--non-numeric">Email</th>
+        <th class="mdl-data-table__cell--non-numeric">BirthID</th>
+        <th class="mdl-data-table__cell--non-numeric">C.address</th>
+        <th class="mdl-data-table__cell--non-numeric">P.address</th>
+        <th class="mdl-data-table__cell--non-numeric">Edit</th>
+        <th class="mdl-data-table__cell--non-numeric">Info</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.forname}"></td>
+        <td th:text="${user.lastname}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.birthiD}"></td>
+        <td th:text="${user.addressForCorrespondence}"></td>
+        <td th:text="${user.permanentResidence}"></td>
+
+
+
+        <td  > <a th:href="@{'/user/id/' + ${user.id}}" > <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 35%" >Edit</button> </a>  </td>
+        <td  > <a th:href="@{'/user/id/info/' + ${user.id}}" > <button class="w3-button w3-circle w3-black" style="background-color: #008080;font-size: 24px;border-radius: 35%" >Info</button> </a>  </td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+<div class="header" style="padding: 60px;
+  text-align: center;
+  background: #008B8B;
+  color: white;
+  font-size: 20px;">
+    <h1>User contracts</h1>
+    <p>User: </p>
+    <p th:text="${user.forname} + ' '+ ${user.lastname}"  > </p>
+</div>
+
+
+
+
+
+
+
+
+
+<table style="margin-top: 60px; padding: 50px;margin-left:auto; margin-right:auto; ">
+    <thead>
+    <tr style=" background-color: #1abc9c;color: white; ">
+        <th class="mdl-data-table__cell--non-numeric">Date</th>
+        <th class="mdl-data-table__cell--non-numeric">Start Date </th>
+        <th class="mdl-data-table__cell--non-numeric">End date</th>
+        <th class="mdl-data-table__cell--non-numeric">Montly cost</th>
+        <th class="mdl-data-table__cell--non-numeric">Edit</th>
+        <th class="mdl-data-table__cell--non-numeric">Info</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr  th:each="users: ${user.usercontract}">
+        <td th:text="${users.datum}"></td>
+        <td th:text="${users.startdate}"></td>
+        <td th:text="${users.enddate}"></td>
+        <td th:text="${users.installment}"></td>
+
+
+
+
+        <td  > <a th:href="@{'/contract/id/edit/' + ${users.id}}" > <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 35%" >Edit</button> </a>  </td>
+        <td  > <a th:href="@{'/contract/id/info/' + ${users.id}}" > <button class="w3-button w3-circle w3-black" style="background-color: #008080;font-size: 24px;border-radius: 35%" >Info</button> </a>  </td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+</body>
+</html>

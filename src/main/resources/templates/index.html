@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC - list</title>
+
+</head>
+
+<body>
+<div class="header" style="padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;">
+    <h1>Ultimate database</h1>
+    <p>All users</p>
+</div>
+
+<div class="w3-bar" style="text-align: center; ">
+    <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 54px;border-radius: 50%" onclick="location.href='/add'">+ </button>
+
+</div>
+<table style="padding: 50px;margin-left:auto; margin-right:auto; ">
+    <thead>
+    <tr style=" background-color: #1abc9c;color: white; ">
+        <th class="mdl-data-table__cell--non-numeric">Id</th>
+        <th class="mdl-data-table__cell--non-numeric">Name</th>
+        <th class="mdl-data-table__cell--non-numeric">Lastname</th>
+        <th class="mdl-data-table__cell--non-numeric">Email</th>
+        <th class="mdl-data-table__cell--non-numeric">Edit</th>
+        <th class="mdl-data-table__cell--non-numeric">Info</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr  th:each="users: ${user}">
+        <td th:text="${users.value.id}"></td>
+        <td th:text="${users.value.forname}"></td>
+        <td th:text="${users.value.lastname}"></td>
+        <td th:text="${users.value.email}"></td>
+
+        <td  > <a th:href="@{'/user/id/' + ${users.value.id}}" > <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 35%" >Edit</button> </a>  </td>
+        <td  > <a th:href="@{'/user/id/info/' + ${users.value.id}}" > <button class="w3-button w3-circle w3-black" style="background-color: #008080;font-size: 24px;border-radius: 35%" >Info</button> </a>  </td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+</html>

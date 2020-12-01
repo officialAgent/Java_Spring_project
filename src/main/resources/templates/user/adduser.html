@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC - list</title>
+
+</head>
+
+<body>
+<div class="header" style="padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;">
+    <h1>Ultimate database</h1>
+    <p>Add user</p>
+</div>
+
+<div class="w3-bar" style="text-align: center; ">
+    <button  class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 50%">+</button>
+    <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 24%" onclick="location.href='/'">home </button>
+</div>
+
+    <form th:action="@{/submit}" th:object="${user}"  method="post" style="padding: 50px;margin-left:45%; margin-right:50%; margin-top: 40px  " >
+
+        <label for="forname">Forname</label>
+        <input type="text" id="forname"   th:field="*{forname}"/>
+        <p th:if="${#fields.hasErrors('forname')}" th:errors="*{forname}"></p>
+        <br>
+
+        <label for="lastname">Lastname</label>
+        <input type="text" id="lastname"   th:field="*{lastname}"/>
+        <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></p>
+        <br>
+
+        <label for="birthiD">BirthID</label>
+        <input type="text" id="birthiD"   th:field="*{birthiD}"/>
+        <p th:if="${#fields.hasErrors('birthiD')}" th:errors="*{birthiD}"></p>
+        <br>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required th:field="*{email}"/>
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        <br>
+
+        <label for="permanentResidence.zipcode">Zip code</label>
+        <input type="text" id="permanentResidence.zipcode"   th:field="*{permanentResidence.zipcode}"/>
+        <p th:if="${#fields.hasErrors('permanentResidence.zipcode')}" th:errors="*{permanentResidence.zipcode}"></p>
+        <br>
+        <label for="city">City</label>
+        <input type="text" id="city"   th:field="*{permanentResidence.township}"/>
+        <p th:if="${#fields.hasErrors('permanentResidence.township')}" th:errors="*{permanentResidence.township}"></p>
+        <br>
+
+        <label for="street">Street</label>
+        <input type="text" id="street"    th:field="*{permanentResidence.street}"/>
+        <p th:if="${#fields.hasErrors('permanentResidence.street')}" th:errors="*{permanentResidence.street}"></p>
+        <br>
+
+        <label for="number">House number</label>
+        <input type="text" id="number"   th:field="*{permanentResidence.number}"/>
+        <p th:if="${#fields.hasErrors('permanentResidence.number')}" th:errors="*{permanentResidence.number}"></p>
+        <br>
+
+
+        <label for="zipcodec">Zip code for Correspondence</label>
+        <input type="text" id="zipcodec" th:field="*{addressForCorrespondence.zipcode}"/>
+        <br>
+        <label for="cityc">City for Correspondence</label>
+        <input type="text" id="cityc" th:field="*{addressForCorrespondence.township}"/>
+        <br>
+
+        <label for="streetc">Street for Correspondence</label>
+        <input type="text" id="streetc" th:field="*{addressForCorrespondence.street}"/>
+        <br>
+
+        <label for="numberc">House number for Correspondence</label>
+        <input type="text" id="numberc" th:field="*{addressForCorrespondence.number}"/>
+        <br>
+
+
+
+        <input style="background-color: #1abc9c;font-size: 24px;border-radius: 50%; margin-top: 12px"  type="submit" value="Submit"/>
+
+
+
+
+
+
+
+
+            </form>
+
+
+        </body>
+        </html>

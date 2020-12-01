@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC - list</title>
+</head>
+<body>
+<div class="header" style="padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;">
+    <h1>Ultimate database</h1>
+    <p>Registration succesfully</p>
+</div>
+
+<div class="w3-bar" style="text-align: center; ">
+    <button  class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 54px;border-radius: 50%">+</button>
+    <button class="w3-button w3-circle w3-black" style="background-color: #1abc9c;font-size: 24px;border-radius: 24%" onclick="location.href='/'">home </button>
+</div>
+
+<div>
+
+<p th:text="${user.forname}"></p><br>
+<p th:text="${user.lastname}"></p><br>
+<p th:text="${user.email}"></p><br>
+<p th:text="${user.id}"></p><br>
+<p th:text="${user.birthiD}"></p><br>
+    <p>addressForCorrespondence</p>
+    <p th:text="${user.addressForCorrespondence}"></p><br>
+    <p>permanentResidenc </p>
+    <p         th:text="${user.permanentResidence}"></p><br>
+</div>
+</body>
+</html>
